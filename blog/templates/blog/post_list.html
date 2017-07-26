@@ -1,13 +1,14 @@
-<html>
+{% extends 'blog/base.html' %}
 
-    <p> chanki</p>
-    {{ posts }}
-    <br>
+{%  block content %}
     {% for post in posts %}
-        <div>
-            <p><published: {{ post.published_date }}/p>
-            <h1><a href="">{{ post.title }}</a></h1>
+        <div class="post">
+            <div class="date">
+                <p style="color:#9aee40;">published: {{ post.published_date }}</p>
+            </div>
+
+            <h1><a href="{%  url 'post_detail' pk=post.pk  %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
     {% endfor %}
-</html>
+{%  endblock %}
